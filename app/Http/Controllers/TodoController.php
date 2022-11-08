@@ -14,7 +14,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        //
+        return view('index');
     }
 
     /**
@@ -24,7 +24,7 @@ class TodoController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -35,7 +35,19 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $todo = [
+            'title' => $request->title,
+            'description' => $request->description,
+            
+        ];
+        $to = Todo::create($todo);
+
+        if(!empty($to)){
+            return redirect()->route('todo.index');
+        }
+        else{
+            return redirect()->back();
+        }
     }
 
     /**
