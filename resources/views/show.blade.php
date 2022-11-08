@@ -8,13 +8,12 @@
 </head>
 <body>
     <h1>
-        This is index page
+        This is Show page
     </h1>
-    <br>
-    @foreach($todos as $todo)
-    <p>{{ $todo->id }}</p>
-    <p>{{ $todo->title }}</p>
-    <p>{{ $todo->description }}</p>
-    @endforeach
+    
+        <p>{{ $todo->title }}</p><br>
+        <p>{{ $todo->description }}</p>
+
+
 </body>
 </html>
