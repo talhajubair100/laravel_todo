@@ -15,6 +15,7 @@
     <input type="text" name="title"><br><br>
     <textarea name="description" id="" cols="30" rows="10"></textarea>
     <br>
+    <input type="file" name="image">
     
     <input type="submit" value="Submit">
     </form>

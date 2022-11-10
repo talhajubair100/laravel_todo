@@ -9,13 +9,14 @@
 <body>
     <h1>This is Edit page layout</h1>
     
-    <form action="{{ route('todo.update', $todo->id) }}" method="POST">
+    <form action="{{ route('todo.update', $todo->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <br>
     <input type="text" name="title" value="{{ $todo->title }}"><br><br>
     <input name="description" value="{{ $todo->description }}">
     <br>
+    <input type="file" name="image">
     
     <input type="submit" value="Submit">
     </form>
