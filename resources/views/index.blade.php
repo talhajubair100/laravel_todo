@@ -38,6 +38,8 @@
                 <tr>
                   <th scope="col">No.</th>
                   <th scope="col">Todo item</th>
+                  <th scope="col">Todo Image</th>
+
                   <th scope="col">Status</th>
                   <th scope="col">Actions</th>
                 </tr>
@@ -48,6 +50,10 @@
                 <tr>
                   <th scope="row">{{ ++$key }}</th>
                   <td>{{ $todo->title }}</td>
+                  <td>
+                  <img src="{{ url('storage/'.$todo->image) }}" alt="Todo Image" height="70px" width="70px">
+
+                  </td>
                   <td><a href="{{ route('todo.show', $todo->id) }}">Show</a></td>
                   
                  

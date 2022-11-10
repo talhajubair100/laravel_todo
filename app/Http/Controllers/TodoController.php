@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TodoController extends Controller
 {
@@ -41,6 +42,15 @@ class TodoController extends Controller
             'description' => $request->description,
             
         ];
+
+        if ($request->hasFile('image')) {
+          
+            $todoFileName = hexdec(uniqid()) . '.' . $request->file('image')->getClientOriginalExtension();
+            $todo['image'] = Storage::putFileAs('images/todo',$request->file('image'),$todoFileName);
+
+        }
+
+        
         $to = Todo::create($todo);
 
         if(!empty($to)){
@@ -90,7 +100,15 @@ class TodoController extends Controller
             'description' => $request->description,
             
         ];
+        if ($request->hasFile('image')) {
+          
+            $todoFileName = hexdec(uniqid()) . '.' . $request->file('image')->getClientOriginalExtension();
+            $todos['image'] = Storage::putFileAs('images/todo',$request->file('image'),$todoFileName);
+
+        }
+        
         $todo->update($todos);
+        
 
         if(!empty($todo)){
             return redirect()->route('todo.index');
