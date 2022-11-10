@@ -71,7 +71,9 @@ class TodoController extends Controller
      */
     public function edit(Todo $todo)
     {
-        //
+        $data['todo'] = $todo;
+        return view('edit', $data);
+
     }
 
     /**
@@ -83,7 +85,20 @@ class TodoController extends Controller
      */
     public function update(Request $request, Todo $todo)
     {
-        //
+        $todos = [
+            'title' => $request->title,
+            'description' => $request->description,
+            
+        ];
+        $todo->update($todos);
+
+        if(!empty($todo)){
+            return redirect()->route('todo.index');
+        }
+        else{
+            return redirect()->back();
+        }
+
     }
 
     /**
