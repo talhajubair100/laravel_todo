@@ -14,6 +14,11 @@
     @foreach($todos as $todo)
     <p>{{ $todo->id }}</p>
     <a href="{{ route('todo.edit',$todo->id) }}">Edit</a>
+    <form method="POST" action="{{ route('todo.destroy', $todo->id) }}">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
     <p>{{ $todo->title }}</p>
     <p>{{ $todo->description }}</p>
     @endforeach
