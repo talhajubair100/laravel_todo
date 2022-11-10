@@ -13,6 +13,7 @@
     <br>
     @foreach($todos as $todo)
     <p>{{ $todo->id }}</p>
+    <a href="{{ route('todo.edit',$todo->id) }}">Edit</a>
     <p>{{ $todo->title }}</p>
     <p>{{ $todo->description }}</p>
     @endforeach
