@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -26,7 +27,8 @@ class TodoController extends Controller
      */
     public function create()
     {
-        return view('create');
+        $data['category'] = Category::all();  
+        return view('create', $data);
     }
 
     /**
@@ -37,9 +39,11 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
+              
         $todo = [
             'title' => $request->title,
             'description' => $request->description,
+            'category_id' => $request->category_id,
             
         ];
 
@@ -81,6 +85,7 @@ class TodoController extends Controller
      */
     public function edit(Todo $todo)
     {
+        $data['category'] = Category::all();  
         $data['todo'] = $todo;
         return view('edit', $data);
 
@@ -98,6 +103,8 @@ class TodoController extends Controller
         $todos = [
             'title' => $request->title,
             'description' => $request->description,
+            'category_id' => $request->category_id,
+
             
         ];
         if ($request->hasFile('image')) {
