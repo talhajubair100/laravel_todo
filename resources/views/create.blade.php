@@ -12,6 +12,11 @@
     <form action="{{ route('todo.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
     <br>
+    <select name="category_id" id="">
+        @foreach($category as $category)
+        <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
+    </select>
     <input type="text" name="title"><br><br>
     <textarea name="description" id="" cols="30" rows="10"></textarea>
     <br>

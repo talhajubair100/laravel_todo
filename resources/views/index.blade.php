@@ -39,7 +39,7 @@
                   <th scope="col">No.</th>
                   <th scope="col">Todo item</th>
                   <th scope="col">Todo Image</th>
-
+                  <th scope="col">Category</th>
                   <th scope="col">Status</th>
                   <th scope="col">Actions</th>
                 </tr>
@@ -51,13 +51,11 @@
                   <th scope="row">{{ ++$key }}</th>
                   <td>{{ $todo->title }}</td>
                   <td>
-                  <img src="{{ url('storage/'.$todo->image) }}" alt="Todo Image" height="70px" width="70px">
+                  <img src="{{ url('storage/'.$todo->image) }}" alt="Todo Image" height="70px" width="70px"></td>
+                  <td>{{ $todo->category->name }}</td>
 
-                  </td>
                   <td><a href="{{ route('todo.show', $todo->id) }}">Show</a></td>
-                  
-                 
-                  <td>
+                                    <td>
                   <form method="POST" action="{{ route('todo.destroy', $todo->id) }}">
                     @csrf
                     @method('DELETE')

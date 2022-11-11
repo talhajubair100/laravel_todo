@@ -13,6 +13,8 @@
     
         <p>{{ $todo->title }}</p><br>
         <p>{{ $todo->description }}</p>
+        <p>{{ $todo->category->name }}</p>
+
         <img src="{{ url('storage/'.$todo->image) }}" alt="Todo Image" height="300px" width="300px">
 
 
